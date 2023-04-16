@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsfxxk3kg073y"]
+
+[ext_resource type="FontFile" uid="uid://cf8a4qjbtru5q" path="res://Fonts/m5x7.ttf" id="1_v5kl6"]
+[ext_resource type="Script" path="res://UIs/chest_contents.gd" id="1_xwd8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mthy1"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="FontVariation" id="FontVariation_b0cgc"]
+base_font = ExtResource("1_v5kl6")
+variation_embolden = 2.0
+
+[node name="ChestContents" type="CanvasLayer"]
+script = ExtResource("1_xwd8l")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(410, 182)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mthy1")
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_b0cgc")
+theme_override_font_sizes/font_size = 22
+text = "Chest ;-;"
+
+[node name="Grid" type="GridContainer" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(380, 120)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 33.0
+offset_right = -10.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 11

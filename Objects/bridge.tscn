@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvm52sl6ofmi6"]
+
+[ext_resource type="Texture2D" uid="uid://c4yfvd2m81d8h" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Wood Bridge.png" id="1_6i61t"]
+[ext_resource type="Script" path="res://Objects/bridge.gd" id="1_d8vp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aowbr"]
+size = Vector2(139, 3.87379)
+
+[node name="Bridge" type="StaticBody2D"]
+script = ExtResource("1_d8vp0")
+
+[node name="WoodBridge" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="WoodBridge2" type="Sprite2D" parent="."]
+position = Vector2(24, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="WoodBridge3" type="Sprite2D" parent="."]
+position = Vector2(40, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="WoodBridge4" type="Sprite2D" parent="."]
+position = Vector2(56, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="WoodBridge5" type="Sprite2D" parent="."]
+position = Vector2(72, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="WoodBridge6" type="Sprite2D" parent="."]
+position = Vector2(88, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="WoodBridge7" type="Sprite2D" parent="."]
+position = Vector2(104, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="WoodBridge9" type="Sprite2D" parent="."]
+position = Vector2(120, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="WoodBridge8" type="Sprite2D" parent="."]
+position = Vector2(136, 8)
+texture = ExtResource("1_6i61t")
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(71.5, 14.5)
+shape = SubResource("RectangleShape2D_aowbr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(72, 1.25)
+shape = SubResource("RectangleShape2D_aowbr")

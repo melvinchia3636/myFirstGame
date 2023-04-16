@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://h8bf2oj1s1sr"]
+
+[ext_resource type="Script" path="res://Objects/chest_item.gd" id="1_d1gij"]
+[ext_resource type="PackedScene" uid="uid://u6pmjqiufn8b" path="res://UIs/icon.tscn" id="1_n5kyp"]
+[ext_resource type="Script" path="res://Objects/Panel.gd" id="1_x3ocu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bka2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aunqt"]
+bg_color = Color(0.894118, 0.894118, 0.894118, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yengi"]
+bg_color = Color(0.894118, 0.894118, 0.894118, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ChestItem" type="PanelContainer"]
+script = ExtResource("1_d1gij")
+
+[node name="Panel" type="Button" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8bka2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aunqt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_yengi")
+script = ExtResource("1_x3ocu")
+
+[node name="Icon" parent="." instance=ExtResource("1_n5kyp")]
+
+[connection signal="pressed" from="Panel" to="Panel" method="_on_pressed"]

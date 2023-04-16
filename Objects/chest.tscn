@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://cngt0br0828v5"]
+
+[ext_resource type="Texture2D" uid="uid://bjh2tkwqaer8j" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Chest.png" id="1_04hvr"]
+[ext_resource type="Script" path="res://Objects/chest.gd" id="1_pf1u3"]
+[ext_resource type="FontFile" uid="uid://cf8a4qjbtru5q" path="res://Fonts/m5x7.ttf" id="2_a3lc3"]
+[ext_resource type="Script" path="res://Objects/Area2D.gd" id="2_ulxcs"]
+[ext_resource type="PackedScene" uid="uid://dsfxxk3kg073y" path="res://UIs/chest_contents.tscn" id="4_wpmwv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aer8p"]
+size = Vector2(16, 7)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k836x"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing = false
+
+[sub_resource type="FontVariation" id="FontVariation_wkv00"]
+base_font = ExtResource("2_a3lc3")
+
+[node name="Chest" type="StaticBody2D"]
+script = ExtResource("1_pf1u3")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_04hvr")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="Sprite"]
+script = ExtResource("2_ulxcs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite/Area2D"]
+position = Vector2(0, 4.5)
+scale = Vector2(1.2421, 1.56)
+shape = SubResource("RectangleShape2D_aer8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_aer8p")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -9.0
+offset_top = -28.0
+offset_right = 9.0
+offset_bottom = -10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k836x")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 16.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_wkv00")
+theme_override_font_sizes/font_size = 18
+text = "E"
+
+[node name="ChestContents" parent="." instance=ExtResource("4_wpmwv")]
+
+[connection signal="body_entered" from="Sprite/Area2D" to="Sprite/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Sprite/Area2D" to="Sprite/Area2D" method="_on_body_exited"]

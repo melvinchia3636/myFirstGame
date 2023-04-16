@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb6joxyvm2sun"]
+
+[ext_resource type="Script" path="res://inventory.gd" id="1_fh101"]
+[ext_resource type="PackedScene" uid="uid://u6pmjqiufn8b" path="res://UIs/icon.tscn" id="2_ejgv0"]
+[ext_resource type="FontFile" uid="uid://cf8a4qjbtru5q" path="res://Fonts/m5x7.ttf" id="3_sspud"]
+
+[sub_resource type="FontVariation" id="FontVariation_hgh24"]
+base_font = ExtResource("3_sspud")
+
+[node name="Inventory" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_fh101")
+
+[node name="StoneCounter" type="Label" parent="."]
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 35.0
+theme_override_fonts/font = SubResource("FontVariation_hgh24")
+theme_override_font_sizes/font_size = 28
+text = "0"
+
+[node name="Wood" parent="." instance=ExtResource("2_ejgv0")]
+position = Vector2(20, 20)
+
+[node name="Stone" parent="." instance=ExtResource("2_ejgv0")]
+position = Vector2(88, 20)
+item = 1
+
+[node name="WoodCounter" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 10.0
+offset_right = 82.0
+offset_bottom = 36.0
+theme_override_fonts/font = SubResource("FontVariation_hgh24")
+theme_override_font_sizes/font_size = 28
+text = "0"

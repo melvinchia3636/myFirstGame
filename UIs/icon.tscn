@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://u6pmjqiufn8b"]
+
+[ext_resource type="Texture2D" uid="uid://bveq6nn5s45jy" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic tools and meterials.png" id="1_3c8bc"]
+[ext_resource type="Script" path="res://Objects/Icon.gd" id="2_bsl32"]
+
+[node name="Icon" type="Sprite2D"]
+position = Vector2(16, 16)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_3c8bc")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 16)
+script = ExtResource("2_bsl32")
