@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlyol87i3qg1f"]
+
+[ext_resource type="Texture2D" uid="uid://bjkjofoh0ahq" path="res://Art/Sprout Lands - Sprites - Basic pack/Objects/Basic Grass Biom things 1.png" id="1_q1c32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi4nf"]
+size = Vector2(8, 6)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ax5kc"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgo8i"]
+radius = 12.0
+
+[node name="Tree" type="StaticBody2D"]
+position = Vector2(367, 256)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.05176e-05, 0)
+texture = ExtResource("1_q1c32")
+region_enabled = true
+region_rect = Rect2(16, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.05176e-05, 11)
+shape = SubResource("RectangleShape2D_hi4nf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.05176e-05, 0)
+shape = SubResource("CapsuleShape2D_ax5kc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.05176e-05, -3)
+shape = SubResource("CircleShape2D_sgo8i")

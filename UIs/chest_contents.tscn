@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsfxxk3kg073y"]
+[gd_scene load_steps=8 format=3 uid="uid://dsfxxk3kg073y"]
 
 [ext_resource type="FontFile" uid="uid://cf8a4qjbtru5q" path="res://Fonts/m5x7.ttf" id="1_v5kl6"]
 [ext_resource type="Script" path="res://UIs/chest_contents.gd" id="1_xwd8l"]
@@ -19,10 +19,49 @@ corner_radius_bottom_left = 4
 base_font = ExtResource("1_v5kl6")
 variation_embolden = 2.0
 
+[sub_resource type="Animation" id="Animation_x8mro"]
+resource_name = "close_chest"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(410, 182), Vector2(2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_5h2sp"]
+resource_name = "open_chest"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(410, 182)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_he2ad"]
+_data = {
+"close_chest": SubResource("Animation_x8mro"),
+"open_chest": SubResource("Animation_5h2sp")
+}
+
 [node name="ChestContents" type="CanvasLayer"]
 script = ExtResource("1_xwd8l")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+top_level = true
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,31 +70,42 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer"]
-custom_minimum_size = Vector2(410, 182)
+clip_contents = true
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_direction = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mthy1")
 
-[node name="Label" type="Label" parent="CenterContainer/Panel"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 8.0
-offset_right = 80.0
-offset_bottom = 31.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_b0cgc")
 theme_override_font_sizes/font_size = 22
 text = "Chest ;-;"
 
-[node name="Grid" type="GridContainer" parent="CenterContainer/Panel"]
-custom_minimum_size = Vector2(380, 120)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 33.0
-offset_right = -10.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Grid" type="GridContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 columns = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CenterContainer/Panel")
+libraries = {
+"": SubResource("AnimationLibrary_he2ad")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
